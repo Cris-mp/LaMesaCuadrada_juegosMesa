@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->double('precio');
-            $table->int('unidades');
-            $table->int('duracion');
-            $table->int('edad_min');
-            $table->int('jugadores_max');
+            $table->integer('unidades');
+            $table->integer('duracion');
+            $table->integer('edad_min');
+            $table->integer('jugadores_max');
             $table->unsignedBigInteger('editorial_id');
             $table->unsignedBigInteger('tipo_id');
             $table->foreign('editorial_id')->references('id')->on('editorial')->onDelete('cascade');
