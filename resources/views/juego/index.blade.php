@@ -35,15 +35,15 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 									<th >Nombre</th>
 									<th >Precio</th>
 									<th >Unidades</th>
 									<th >Duracion</th>
 									<th >Edad Min</th>
 									<th >Jugadores Max</th>
-									<th >Editorial Id</th>
-									<th >Tipo Id</th>
+									<th >Editorial</th>
+									<th >Tipo</th>
 
                                         <th></th>
                                     </tr>
@@ -52,15 +52,15 @@
                                     @foreach ($juegos as $juego)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 										<td >{{ $juego->nombre }}</td>
 										<td >{{ $juego->precio }}</td>
 										<td >{{ $juego->unidades }}</td>
 										<td >{{ $juego->duracion }}</td>
 										<td >{{ $juego->edad_min }}</td>
 										<td >{{ $juego->jugadores_max }}</td>
-										<td >{{ $juego->editorial_id }}</td>
-										<td >{{ $juego->tipo_id }}</td>
+										<td >{{ $juego->editorial->nombre}}</td>
+										<td >{{ $juego->tipo->nombre }}</td>
 
                                             <td>
                                                 <form action="{{ route('juegos.destroy', $juego->id) }}" method="POST">

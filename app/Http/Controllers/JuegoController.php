@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Juego;
+use App\Models\Editorial;
+use App\Models\Tipo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\JuegoRequest;
@@ -25,11 +27,13 @@ class JuegoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+      //NOTE: EDITE AQUI PARA REFERENCIAR LAS TABLAS
     public function create(): View
     {
         $juego = new Juego();
-
-        return view('juego.create', compact('juego'));
+        $editorial = Editorial::pluck('nombre','id');
+        $tipo = Tipo::pluck('nombre','id');
+        return view('juego.create', compact('juego','categorias','tipo'));
     }
 
     /**
@@ -56,11 +60,13 @@ class JuegoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    //NOTE: EDITE AQUI PARA REFERENCIAR LAS TABLAS
     public function edit($id): View
     {
         $juego = Juego::find($id);
-
-        return view('juego.edit', compact('juego'));
+        $editorial = Editorial::pluck('nombre','id');
+        $tipo = Tipo::pluck('nombre','id');
+        return view('juego.edit', compact('juego','categorias','tipo'));
     }
 
     /**

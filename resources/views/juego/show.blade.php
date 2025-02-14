@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
+
                                 <div class="form-group mb-2 mb20">
                                     <strong>Nombre:</strong>
                                     {{ $juego->nombre }}
@@ -44,13 +44,14 @@
                                     <strong>Jugadores Max:</strong>
                                     {{ $juego->jugadores_max }}
                                 </div>
+                                <!--MODIFIQUE AQUI-->
                                 <div class="form-group mb-2 mb20">
-                                    <strong>Editorial Id:</strong>
-                                    {{ $juego->editorial_id }}
+                                    <strong>Editorial:</strong>
+                                    {{ $juego->editorial->nombre }}
                                 </div>
                                 <div class="form-group mb-2 mb20">
-                                    <strong>Tipo Id:</strong>
-                                    {{ $juego->tipo_id }}
+                                    <strong>Tipo:</strong>
+                                    {{ $juego->tipo->nombre }}
                                 </div>
 
                     </div>
