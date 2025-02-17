@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo', function (Blueprint $table) {
+        Schema::create('editorials', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->id();
             $table->string('nombre');
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo');
+        Schema::dropIfExists('editorials');
     }
 };

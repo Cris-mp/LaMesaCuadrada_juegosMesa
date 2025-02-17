@@ -46,7 +46,7 @@
             <input type="text" name="editorial_id" class="form-control @error('editorial_id') is-invalid @enderror" value="{{ old('editorial_id', $juego?->editorial_id) }}" id="editorial_id" placeholder="Editorial Id">
             {!! $errors->first('editorial_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!} --}}
             {{ Form::label('editorial') }}
-            {{ Form::select('editorial_id', $tipo, $libro->tipo_id, ['class' => 'form-control' . ($errors->has('editorial_id') ? ' is-invalid' : ''), 'placeholder' => 'Editorial Id']) }}
+            {{ Form::select('editorial_id', $editorial, $juego->editorial_id, ['class' => 'form-control' . ($errors->has('editorial_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('editorial_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
@@ -55,7 +55,7 @@
                 value="{{ old('tipo_id', $juego?->tipo_id) }}" id="tipo_id" placeholder="Tipo Id">
             {!! $errors->first('tipo_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!} --}}
             {{ Form::label('tipo') }}
-            {{ Form::select('tipo_id', $tipo, $libro->tipo_id, ['class' => 'form-control' . ($errors->has('tipo_id') ? ' is-invalid' : ''), 'placeholder' => 'Tipo Id']) }}
+            {{ Form::select('tipo_id', $tipo, $juego->tipo_id, ['class' => 'form-control' . ($errors->has('tipo_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('tipo_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

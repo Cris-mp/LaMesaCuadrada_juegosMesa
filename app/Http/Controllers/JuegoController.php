@@ -33,7 +33,7 @@ class JuegoController extends Controller
         $juego = new Juego();
         $editorial = Editorial::pluck('nombre','id');
         $tipo = Tipo::pluck('nombre','id');
-        return view('juego.create', compact('juego','categorias','tipo'));
+        return view('juego.create', compact('juego','editorial','tipo'));
     }
 
     /**
@@ -66,7 +66,7 @@ class JuegoController extends Controller
         $juego = Juego::find($id);
         $editorial = Editorial::pluck('nombre','id');
         $tipo = Tipo::pluck('nombre','id');
-        return view('juego.edit', compact('juego','categorias','tipo'));
+        return view('juego.edit', compact('juego','editorial','tipo'));
     }
 
     /**
