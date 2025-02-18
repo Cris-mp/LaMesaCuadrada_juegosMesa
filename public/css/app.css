@@ -1,0 +1,31 @@
+html{
+    font-size: large;
+}
+.logo{
+    height: 50px;
+    width: auto;
+}
+
+.navbar a {
+    color: #ff5f44;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color:#18485c;
+    
+}
+
+.thead-orange th {
+    background-color: #ff5f44 !important;
+    color: white !important; 
+}
+
+.logo-orange {
+    background-color: #ff5f44 !important; 
+    color: white !important; 
+}
+.logo-blue{
+    background-color: #18485c !important; 
+    color: white !important; 
+}

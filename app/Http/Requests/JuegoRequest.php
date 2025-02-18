@@ -22,14 +22,14 @@ class JuegoRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'nombre' => 'required|string',
-			'precio' => 'required',
-			'unidades' => 'required',
-			'duracion' => 'required',
-			'edad_min' => 'required',
-			'jugadores_max' => 'required',
-			'editorial_id' => 'required',
-			'tipo_id' => 'required',
+            'nombre' => 'required|string|max:255',
+            'precio' => 'required|numeric',
+            'unidades' => 'required|integer',
+            'duracion' => 'required|string|max:255',
+            'edad_min' => 'required|integer', 
+            'jugadores_max' => 'required|integer', 
+            'editorial_id' => 'required|exists:editorials,id', 
+            'tipo_id' => 'required|exists:tipos,id', 
         ];
     }
 }

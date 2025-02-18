@@ -1,85 +1,90 @@
 @extends('layouts.app')
-
-@section('template_title')
-    Juegos
-@endsection
+@section('title', 'Juegos')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-
-                            <span id="card_title">
-                                {{ __('Juegos') }}
-                            </span>
-
-                             <div class="float-right">
-                                <a href="{{ route('juegos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
-                                </a>
-                              </div>
-                        </div>
-                    </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success m-4">
-                            <p>{{ $message }}</p>
-                        </div>
+<div class="container-fluid d-flex justify-content-center">
+    <div class="row w-100">
+        <div class="col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span id="card_title">{{ __('Juegos') }}</span>
+                    @if (Auth::user()->rol == "admin")
+                    <!-- Botón Crear con Icono -->
+                    <a href="{{ route('juegos.create') }}" class="btn logo-orange btn-sm">
+                        <i class="fa fa-plus"></i> <i class="fa fa-puzzle-piece"></i> <!-- Icono de FontAwesome -->
+                    </a>
                     @endif
+                </div>
 
-                    <div class="card-body bg-white">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
-                                    <tr>
-                                        <th>No</th>
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success m-4">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
 
-									<th >Nombre</th>
-									<th >Precio</th>
-									<th >Unidades</th>
-									<th >Duracion</th>
-									<th >Edad Min</th>
-									<th >Jugadores Max</th>
-									<th >Editorial</th>
-									<th >Tipo</th>
+                <div class="card-body bg-white">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover text-center">
+                            <thead class="thead-orange">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Unidades</th>
+                                    <th>Duración</th>
+                                    <th>Edad Mín.</th>
+                                    <th>Jugadores Máx.</th>
+                                    <th>Editorial</th>
+                                    <th>Tipo</th>
+                                    <th>Acciones</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($juegos as $juego)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $juego->nombre }}</td>
+                                    <td>{{ $juego->precio }}</td>
+                                    <td>{{ $juego->unidades }}</td>
+                                    <td>{{ $juego->duracion }}</td>
+                                    <td>{{ $juego->edad_min }}</td>
+                                    <td>{{ $juego->jugadores_max }}</td>
+                                    <td>{{ $juego->editorial->nombre }}</td>
+                                    <td>{{ $juego->tipo->nombre }}</td>
 
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($juegos as $juego)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
+                                    <!-- Botones con Iconos -->
+                                    <td class="d-flex justify-content-center">
+                                        <!-- Botón de Mostrar -->
+                                        <a href="{{ route('juegos.show', $juego->id) }}" class="btn btn-link text-primary p-0 m-1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        @if (Auth::user()->rol == "admin")
 
-										<td >{{ $juego->nombre }}</td>
-										<td >{{ $juego->precio }}</td>
-										<td >{{ $juego->unidades }}</td>
-										<td >{{ $juego->duracion }}</td>
-										<td >{{ $juego->edad_min }}</td>
-										<td >{{ $juego->jugadores_max }}</td>
-										<td >{{ $juego->editorial->nombre}}</td>
-										<td >{{ $juego->tipo->nombre }}</td>
+                                        <!-- Botón de Editar -->
+                                        <a href="{{ route('juegos.edit', $juego->id) }}" class="btn btn-link text-success p-0 m-1">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
 
-                                            <td>
-                                                <form action="{{ route('juegos.destroy', $juego->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('juegos.show', $juego->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('juegos.edit', $juego->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                        <!-- Botón de Eliminar -->
+                                        <form action="{{ route('juegos.destroy', $juego->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este juego?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-link text-danger p-0 m-1">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                {!! $juegos->withQueryString()->links() !!}
             </div>
+            {!! $juegos->withQueryString()->links() !!}
         </div>
     </div>
+</div>
 @endsection

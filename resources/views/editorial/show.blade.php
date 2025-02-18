@@ -7,14 +7,14 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+        <div class="col-lg-4 mx-auto">
                 <div class="card">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="card-header logo-orange" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Editorial</span>
+                            <span class="card-title">Editoriales</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('editorials.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn logo-blue btn-sm" href="{{ route('editorials.index') }}"> <i class="fa fa-rotate-left"></i></a>
                         </div>
                     </div>
 

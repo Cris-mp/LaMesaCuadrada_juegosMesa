@@ -7,10 +7,10 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+        <div class="col-lg-5 mx-auto">
 
                 <div class="card card-default">
-                    <div class="card-header">
+                    <div class="card-header logo-orange">
                         <span class="card-title">{{ __('Create') }} Editorial</span>
                     </div>
                     <div class="card-body bg-white">
