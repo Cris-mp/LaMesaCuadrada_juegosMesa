@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('jugadores_max');
             $table->unsignedBigInteger('editorial_id');
             $table->unsignedBigInteger('tipo_id');
-            $table->foreign('editorial_id')->references('id')->on('editorial')->onDelete('cascade');
-            $table->foreign('tipo_id')->references('id')->on('tipo')->onDelete('cascade');
+            $table->foreign('editorial_id')->references('id')->on('editorials')->onDelete('cascade');
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
         });
     }
 

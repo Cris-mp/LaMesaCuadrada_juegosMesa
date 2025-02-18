@@ -33,13 +33,12 @@
                 <!-- --------INTRODUCCION DE LOS BOTONES DEL NAVBAR----------- -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @if (Auth::check())
-                        <!-- AUTORIZADO SOLKO SI ESTA LOGING -->
+                    @if (Auth::check())<!-- AUTORIZADO SOLO SI ESTA LOGING -->
                         <ul class="navbar-nav me-auto">
                             <li class="nav_item">
                                 <a class="nav-link" href="{{ route('juegos.index') }}">{{ __('Juegos') }}</a>
                             </li>
-                            @if (Auth::user()->rol == "admin")
+                            @if (Auth::user()->rol == "admin")<!-- AUTORIZADO SOLO SI ESTA LOGING Y ES ADMIN-->
                                 <li class="nav_item">
                                     <a class="nav-link" href="{{ route('tipos.index') }}">{{ __('Tipos de Juego') }}</a>
                                 </li>
