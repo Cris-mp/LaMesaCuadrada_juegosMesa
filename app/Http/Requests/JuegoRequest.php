@@ -20,16 +20,16 @@ class JuegoRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|numeric',
-            'unidades' => 'required|integer',
-            'duracion' => 'required|string|max:255',
-            'edad_min' => 'required|integer', 
-            'jugadores_max' => 'required|integer', 
-            'editorial_id' => 'required|exists:editorials,id', 
-            'tipo_id' => 'required|exists:tipos,id', 
-        ];
-    }
+{
+    return [
+        'nombre' => 'required|string|max:255',
+        'precio' => 'required|numeric|min:0',
+        'unidades' => 'required|integer|min:0', 
+        'duracion' => 'required|string|max:255',
+        'edad_min' => 'required|integer|min:0', 
+        'jugadores_max' => 'required|integer|min:0', 
+        'editorial_id' => 'required|exists:editorials,id',
+        'tipo_id' => 'required|exists:tipos,id',
+    ];
+}
 }
